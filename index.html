@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>The Separate Rooms Plan</title>
+  <meta name="description" content="For Strawberry Cupcake — a playful, honest look at what separate bedrooms for our kids would actually take." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ink: #1c2a24;
+      --ink-soft: #3d5248;
+      --paper: #f3faf6;
+      --mint: #d8f3e4;
+      --leaf: #2f8f6b;
+      --leaf-deep: #1f6b4f;
+      --sun: #ffe08a;
+      --coral: #ff7a59;
+      --sky: #b8e4f5;
+      --shadow: 0 18px 40px rgba(28, 42, 36, 0.12);
+      --radius: 1.25rem;
+      --font-display: "Fraunces", Georgia, serif;
+      --font-body: "Nunito", "Segoe UI", sans-serif;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: var(--font-body);
+      font-size: 1.05rem;
+      line-height: 1.55;
+      background:
+        radial-gradient(ellipse 80% 50% at 10% -10%, var(--sky), transparent 55%),
+        radial-gradient(ellipse 70% 45% at 100% 0%, var(--sun), transparent 50%),
+        radial-gradient(ellipse 60% 40% at 50% 100%, var(--mint), transparent 55%),
+        var(--paper);
+      min-height: 100vh;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: var(--leaf-deep);
+    }
+
+    .wrap {
+      width: min(1080px, calc(100% - 2rem));
+      margin-inline: auto;
+    }
+
+    /* —— Hero —— */
+    .hero {
+      position: relative;
+      min-height: 100svh;
+      display: grid;
+      align-items: end;
+      overflow: hidden;
+      color: #fff;
+    }
+
+    .hero__bg {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(20, 40, 32, 0.15) 0%, rgba(20, 40, 32, 0.72) 55%, rgba(20, 40, 32, 0.9) 100%),
+        url("photos/03-living-room-homework-wall.jpg") center / cover no-repeat;
+      transform: scale(1.02);
+    }
+
+    .hero__content {
+      position: relative;
+      z-index: 1;
+      padding: clamp(2rem, 6vw, 4rem) 0 3rem;
+    }
+
+    .brand {
+      font-family: var(--font-display);
+      font-size: clamp(2.6rem, 8vw, 4.6rem);
+      font-weight: 700;
+      line-height: 0.95;
+      letter-spacing: -0.02em;
+      margin: 0 0 0.85rem;
+      max-width: 12ch;
+      text-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+    }
+
+    .hero__lede {
+      margin: 0 0 1.5rem;
+      max-width: 34ch;
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.92);
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .btn {
+      appearance: none;
+      border: 0;
+      border-radius: 999px;
+      padding: 0.85rem 1.35rem;
+      font: inherit;
+      font-weight: 800;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .btn--primary {
+      background: var(--sun);
+      color: var(--ink);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25);
+    }
+
+    .btn--ghost {
+      background: rgba(255, 255, 255, 0.14);
+      color: #fff;
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.35);
+    }
+
+    /* —— Sections —— */
+    section {
+      padding: clamp(2.5rem, 6vw, 4.5rem) 0;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      font-size: 0.8rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--leaf);
+      margin-bottom: 0.5rem;
+    }
+
+    h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      line-height: 1.1;
+      margin: 0 0 0.75rem;
+      max-width: 18ch;
+    }
+
+    .section-lede {
+      margin: 0 0 1.75rem;
+      max-width: 48ch;
+      color: var(--ink-soft);
+      font-weight: 600;
+    }
+
+    /* —— Two paths —— */
+    .paths {
+      display: grid;
+      gap: 1rem;
+    }
+
+    @media (min-width: 720px) {
+      .paths {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .path {
+      border-radius: var(--radius);
+      padding: 1.35rem 1.4rem 1.5rem;
+      background: rgba(255, 255, 255, 0.72);
+      border: 2px solid transparent;
+      box-shadow: var(--shadow);
+    }
+
+    .path--a {
+      border-color: rgba(47, 143, 107, 0.35);
+      background: linear-gradient(160deg, #fff 0%, var(--mint) 140%);
+    }
+
+    .path--b {
+      border-color: rgba(255, 122, 89, 0.4);
+      background: linear-gradient(160deg, #fff 0%, #ffe8e1 140%);
+    }
+
+    .path h3 {
+      font-family: var(--font-display);
+      margin: 0 0 0.5rem;
+      font-size: 1.45rem;
+    }
+
+    .path p {
+      margin: 0;
+      color: var(--ink-soft);
+      font-weight: 600;
+    }
+
+    .path__tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 0.55rem;
+      color: var(--leaf-deep);
+    }
+
+    .path--b .path__tag {
+      color: #c24a2e;
+    }
+
+    /* —— Photo strip —— */
+    .photo-grid {
+      display: grid;
+      gap: 0.85rem;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    @media (min-width: 800px) {
+      .photo-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .shot {
+      margin: 0;
+      border-radius: 1rem;
+      overflow: hidden;
+      background: #fff;
+      box-shadow: var(--shadow);
+    }
+
+    .shot img {
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      width: 100%;
+    }
+
+    .shot figcaption {
+      padding: 0.7rem 0.85rem 0.9rem;
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--ink-soft);
+    }
+
+    /* —— Effort meter —— */
+    .meter {
+      background: #fff;
+      border-radius: var(--radius);
+      padding: 1.25rem 1.35rem 1.4rem;
+      box-shadow: var(--shadow);
+      margin-bottom: 2rem;
+    }
+
+    .meter__label {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      font-weight: 800;
+      margin-bottom: 0.65rem;
+      flex-wrap: wrap;
+    }
+
+    .meter__track {
+      height: 1rem;
+      border-radius: 999px;
+      background: var(--mint);
+      overflow: hidden;
+    }
+
+    .meter__fill {
+      height: 100%;
+      width: 0;
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--leaf), var(--coral));
+    }
+
+    .meter__note {
+      margin: 0.7rem 0 0;
+      font-size: 0.95rem;
+      color: var(--ink-soft);
+      font-weight: 600;
+    }
+
+    /* —— Checklist phases —— */
+    .phases {
+      display: grid;
+      gap: 0.85rem;
+    }
+
+    .phase {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 0.9rem;
+      align-items: start;
+      padding: 1rem 1.1rem;
+      border-radius: 1rem;
+      background: rgba(255, 255, 255, 0.8);
+      border: 1px solid rgba(28, 42, 36, 0.08);
+      cursor: pointer;
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+
+    .phase:has(input:checked) {
+      background: var(--mint);
+      border-color: rgba(47, 143, 107, 0.35);
+    }
+
+    .phase input {
+      margin-top: 0.35rem;
+      width: 1.25rem;
+      height: 1.25rem;
+      accent-color: var(--leaf);
+      cursor: pointer;
+    }
+
+    .phase__title {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      margin: 0 0 0.25rem;
+    }
+
+    .phase__body {
+      margin: 0;
+      color: var(--ink-soft);
+      font-weight: 600;
+      font-size: 0.98rem;
+    }
+
+    .phase__meta {
+      display: inline-block;
+      margin-top: 0.45rem;
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--coral);
+    }
+
+    /* —— Friction —— */
+    .friction {
+      display: grid;
+      gap: 1rem;
+    }
+
+    @media (min-width: 700px) {
+      .friction {
+        grid-template-columns: 1.1fr 0.9fr;
+        align-items: center;
+      }
+    }
+
+    .friction__list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 0.75rem;
+    }
+
+    .friction__list li {
+      background: #fff;
+      border-radius: 1rem;
+      padding: 1rem 1.1rem;
+      box-shadow: var(--shadow);
+      font-weight: 600;
+      color: var(--ink-soft);
+    }
+
+    .friction__list strong {
+      display: block;
+      color: var(--ink);
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .friction figure {
+      margin: 0;
+      border-radius: 1.1rem;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .friction img {
+      aspect-ratio: 3 / 4;
+      object-fit: cover;
+      width: 100%;
+    }
+
+    /* —— Close —— */
+    .close {
+      text-align: center;
+      padding-bottom: 4rem;
+    }
+
+    .close .bubble {
+      display: inline-block;
+      background: #fff;
+      border-radius: 1.5rem;
+      padding: clamp(1.5rem, 4vw, 2.25rem);
+      box-shadow: var(--shadow);
+      max-width: 36rem;
+      text-align: left;
+    }
+
+    .close h2 {
+      max-width: none;
+    }
+
+    .close p {
+      margin: 0 0 1rem;
+      color: var(--ink-soft);
+      font-weight: 600;
+    }
+
+    .close p:last-child {
+      margin-bottom: 0;
+    }
+
+    .heart {
+      color: var(--coral);
+    }
+
+    .sc {
+      white-space: nowrap;
+    }
+
+    .sc__icon {
+      display: inline-block;
+      font-size: 0.82em;
+      margin-left: 0.2em;
+      vertical-align: 0.05em;
+      line-height: 1;
+    }
+
+    footer {
+      padding: 1.5rem 0 2.5rem;
+      text-align: center;
+      color: var(--ink-soft);
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    /* —— Motion —— */
+    @media (prefers-reduced-motion: no-preference) {
+      .hero__bg {
+        animation: soft-drift 18s ease-in-out infinite alternate;
+      }
+
+      @keyframes soft-drift {
+        from { transform: scale(1.02) translate3d(0, 0, 0); }
+        to { transform: scale(1.06) translate3d(-1.5%, -1%, 0); }
+      }
+
+      .reveal {
+        opacity: 0;
+        transform: translateY(18px);
+        transition: opacity 0.55s ease, transform 0.55s ease;
+      }
+
+      .reveal.is-in {
+        opacity: 1;
+        transform: none;
+      }
+
+      .meter__fill {
+        transition: width 1.1s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+
+      .phase:active {
+        transform: scale(0.99);
+      }
+
+      .btn--primary:hover {
+        transform: translateY(-2px);
+      }
+
+      .btn--primary {
+        transition: transform 0.2s ease;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="hero__bg" aria-hidden="true"></div>
+    <div class="wrap hero__content">
+      <p class="brand">The Separate Rooms Plan</p>
+      <p class="hero__lede">
+        Hey <span class="sc">Strawberry Cupcake<span class="sc__icon" aria-hidden="true">🧁</span></span> —
+        I made this for us. A loving, slightly sweaty inventory of what it takes if we give each
+        kid their own room.
+      </p>
+      <div class="cta-row">
+        <a class="btn btn--primary" href="#paths">Our two paths</a>
+        <a class="btn btn--ghost" href="#checklist">The checklist</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="paths" class="wrap reveal">
+      <p class="eyebrow">Honest fork in the road</p>
+      <h2>Two ways we can do bedtime</h2>
+      <p class="section-lede">
+        <span class="sc">Strawberry Cupcake<span class="sc__icon" aria-hidden="true">🧁</span></span>,
+        neither option is “wrong.” I put this together so we can both see the real shape of
+        Option B — not the Pinterest version.
+      </p>
+      <div class="paths">
+        <article class="path path--a">
+          <span class="path__tag">Option A</span>
+          <h3>Kids share a room</h3>
+          <p>
+            Emma and KJ keep sleeping together. When you’re away or out late, I already have nights
+            that work with them. The hard part is boundaries and a stretch of messy emotions —
+            not furniture, Wi‑Fi, or a weekend of heavy lifting.
+          </p>
+        </article>
+        <article class="path path--b">
+          <span class="path__tag">Option B</span>
+          <h3>Separate rooms</h3>
+          <p>
+            One of them moves into my current office bedroom. That means my whole workspace —
+            desk, bookshelf, printer, and our home network brain — relocates into our open living
+            room, along that wall we already use for their homework desks. Plus the privacy screen
+            you already bought, safety checks, and a transition week for all of us.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="wrap reveal" id="moves">
+      <p class="eyebrow">What has to physically move</p>
+      <h2>It’s not “just a bed”</h2>
+      <p class="section-lede">
+        I walked the house and took these photos. Option B means we rearrange almost all of this.
+      </p>
+      <div class="photo-grid">
+        <figure class="shot">
+          <img src="photos/06-current-office.jpg" alt="Standing desk, bookshelf, printer, and cables in the current office bedroom" loading="lazy" />
+          <figcaption>My office bedroom — desk, books, printer, UniFi gear</figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="photos/03-living-room-homework-wall.jpg" alt="Open living room wall with two kids homework desks and clutter along the floor" loading="lazy" />
+          <figcaption>Our open living room — that wall is their homework / writing space (we’d clear it first)</figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="photos/05-privacy-screen.jpg" alt="Tall black folding privacy screen leaning near a desk" loading="lazy" />
+          <figcaption>The privacy screen you bought — still needs a real home</figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="photos/02-network-tangle.jpg" alt="Bridged AT&T router and tangled cables behind a pink kids bookshelf" loading="lazy" />
+          <figcaption>Bridged AT&T router tucked behind the kids’ pink bookshelf — not kid-zone friendly as-is</figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="photos/01-ethernet-vent.jpg" alt="Blue ethernet cable running along baseboard under HVAC vent" loading="lazy" />
+          <figcaption>That blue ethernet on the floor — I’d fix this either way</figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="photos/04-window-cables.jpg" alt="Dark window corner where the AT&T modem sits with cables and a power brick" loading="lazy" />
+          <figcaption>Dark window corner — that’s where the AT&T modem sits (hard to see, but it’s there)</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="wrap reveal" id="checklist">
+      <p class="eyebrow">Tap along if you want, <span class="sc">Strawberry Cupcake<span class="sc__icon" aria-hidden="true">🧁</span></span></p>
+      <h2>The “are we sure?” checklist</h2>
+      <p class="section-lede">
+        Roughly 1–2 full days of work for us, then a week of sleep settling. Checking boxes doesn’t
+        commit us — it just makes the mountain feel countable.
+      </p>
+
+      <div class="meter" aria-live="polite">
+        <div class="meter__label">
+          <span>Effort meter</span>
+          <span id="meter-text">0 / 7 phases</span>
+        </div>
+        <div class="meter__track">
+          <div class="meter__fill" id="meter-fill"></div>
+        </div>
+        <p class="meter__note" id="meter-note">Start tapping — watch the bar get honest.</p>
+      </div>
+
+      <div class="phases" id="phases">
+        <label class="phase">
+          <input type="checkbox" data-phase="1" />
+          <span>
+            <p class="phase__title">1. Network first (the spicy one)</p>
+            <p class="phase__body">
+              Our AT&T modem lives in that dark window corner, and the bridged AT&T router sits behind
+              the kids’ pink bookshelf. I’d also move my UniFi gear (UDMP + U6 Mesh) into the living
+              room area, run a proper ethernet backhaul, tame cables, and test Wi‑Fi everywhere.
+              Optional UPS so a blip doesn’t kill our house internet.
+            </p>
+            <span class="phase__meta">Non-trivial · I’d do this before furniture</span>
+          </span>
+        </label>
+
+        <label class="phase">
+          <input type="checkbox" data-phase="2" />
+          <span>
+            <p class="phase__title">2. Clear the landing zone</p>
+            <p class="phase__body">
+              That living-room wall (their pink + blue homework desks) is sharing space with bins,
+              mats, bags, and floor clutter. Nothing big of mine moves in until that stretch can breathe.
+            </p>
+            <span class="phase__meta">Prerequisite · half a day easy</span>
+          </span>
+        </label>
+
+        <label class="phase">
+          <input type="checkbox" data-phase="3" />
+          <span>
+            <p class="phase__title">3. Furniture shuffle</p>
+            <p class="phase__body">
+              My standing desk, 5‑ft bookshelf (+ all the books), printer stand, monitor, peripherals —
+              office bedroom → that living-room homework wall. We measure twice so we don’t invent a Tetris fail.
+            </p>
+            <span class="phase__meta">Two-person job · heavy pieces</span>
+          </span>
+        </label>
+
+        <label class="phase">
+          <input type="checkbox" data-phase="4" />
+          <span>
+            <p class="phase__title">4. Sleeping setup</p>
+            <p class="phase__body">
+              We decide who gets which room, set beds/bedding, night lights, doors that close well,
+              personal storage for each kid, and give that tall privacy screen you bought a real plan.
+            </p>
+            <span class="phase__meta">Kids help decorate = buy-in</span>
+          </span>
+        </label>
+
+        <label class="phase">
+          <input type="checkbox" data-phase="5" />
+          <span>
+            <p class="phase__title">5. My new workspace in the living room</p>
+            <p class="phase__body">
+              I’d redo power + cable routing so it isn’t a spaghetti monster, set standing desk height,
+              add task light, not block the big HVAC vent, and think about living-room noise (and our
+              little humans nearby).
+            </p>
+            <span class="phase__meta">Ergonomics + airflow</span>
+          </span>
+        </label>
+
+        <label class="phase">
+          <input type="checkbox" data-phase="6" />
+          <span>
+            <p class="phase__title">6. Safety pass</p>
+            <p class="phase__body">
+              We secure floor cables, wall-anchor the bookshelf, keep network gear ventilated (not stuffed
+              in a closet), put covers on reachable outlets — no power strips as toys for Emma and KJ.
+            </p>
+            <span class="phase__meta">Non-negotiable for our kids</span>
+          </span>
+        </label>
+
+        <label class="phase">
+          <input type="checkbox" data-phase="7" />
+          <span>
+            <p class="phase__title">7. Transition week</p>
+            <p class="phase__body">
+              Weekend move if we can, 2‑week trial before we call it permanent, expect bumpy nights,
+              and keep a backup plan if one room just doesn’t click for them (or for us).
+            </p>
+            <span class="phase__meta">Emotional labor counts too</span>
+          </span>
+        </label>
+      </div>
+    </section>
+
+    <section class="wrap reveal" id="friction">
+      <p class="eyebrow">Three friction points from my photos</p>
+      <h2>These are our “hmm” moments</h2>
+      <div class="friction">
+        <ul class="friction__list">
+          <li>
+            <strong>Moving the internet isn’t plug-and-play</strong>
+            AT&T modem + bridged router are already wedged in a dark corner / behind a kids’ bookshelf.
+            Moving my UniFi gear on top of that means real cable runs and coverage testing — I can’t just unplug-and-hope.
+          </li>
+          <li>
+            <strong>That living-room wall isn’t empty</strong>
+            Cleanup is step zero for us. My desk + bookshelf can’t land on today’s homework-wall floor situation.
+          </li>
+          <li>
+            <strong>Cables + kids</strong>
+            Loose ethernet, power bricks, and tippy tall furniture need a grown-up safety pass from us either way.
+          </li>
+        </ul>
+        <figure>
+          <img src="photos/06-current-office.jpg" alt="Dense home office with ultrawide monitor and cable clutter under the desk" loading="lazy" />
+        </figure>
+      </div>
+    </section>
+
+    <section class="wrap close reveal">
+      <div class="bubble">
+        <p class="eyebrow">No pressure — just clarity</p>
+        <h2>Sleep on it <span class="heart" aria-hidden="true">♥</span></h2>
+        <p>
+          If separate rooms are truly what we want, this checklist is the path — and we can do it
+          with eyes open, a weekend, and a little grit.
+        </p>
+        <p>
+          If the heavier lift is coaching through nighttime emotions so the kids can share a room
+          without you becoming the overnight firefighter… that’s a real option too. I’m already
+          living a version of that when you’re away.
+        </p>
+        <p>
+          Either way: I’m not trying to “win.” I want us to pick the plan whose cost we actually
+          mean to pay. Love you <span class="sc__icon" aria-hidden="true">🧁</span> — let’s talk when you’ve had a minute with this.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="wrap">
+    Made for <span class="sc">Strawberry Cupcake<span class="sc__icon" aria-hidden="true">🧁</span></span> · from me, with love · no account, no app store, no drama
+  </footer>
+
+  <script>
+    (function () {
+      var boxes = Array.prototype.slice.call(document.querySelectorAll("#phases input[type=checkbox]"));
+      var fill = document.getElementById("meter-fill");
+      var text = document.getElementById("meter-text");
+      var note = document.getElementById("meter-note");
+      var storageKey = "separate-rooms-checks-v1";
+      var notes = [
+        "Start tapping — watch the bar get honest.",
+        "One down. Cute.",
+        "Two phases. Still smiling?",
+        "Three. This is becoming a project.",
+        "Four. Someone’s getting measuring tape.",
+        "Five. We’re in deep renovation energy.",
+        "Six. Almost the whole mountain.",
+        "Seven of seven. That’s our real plan — or a very clear ‘maybe later,’ Strawberry Cupcake 🧁."
+      ];
+
+      function updateMeter() {
+        var done = boxes.filter(function (b) { return b.checked; }).length;
+        var total = boxes.length;
+        fill.style.width = (done / total) * 100 + "%";
+        text.textContent = done + " / " + total + " phases";
+        note.textContent = notes[done];
+      }
+
+      function save() {
+        var state = boxes.map(function (b) { return b.checked; });
+        try {
+          localStorage.setItem(storageKey, JSON.stringify(state));
+        } catch (e) {}
+      }
+
+      function load() {
+        try {
+          var raw = localStorage.getItem(storageKey);
+          if (!raw) return;
+          var state = JSON.parse(raw);
+          boxes.forEach(function (b, i) {
+            if (typeof state[i] === "boolean") b.checked = state[i];
+          });
+        } catch (e) {}
+      }
+
+      boxes.forEach(function (b) {
+        b.addEventListener("change", function () {
+          updateMeter();
+          save();
+        });
+      });
+
+      load();
+      updateMeter();
+
+      if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        var reveals = document.querySelectorAll(".reveal");
+        if ("IntersectionObserver" in window) {
+          var io = new IntersectionObserver(
+            function (entries) {
+              entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                  entry.target.classList.add("is-in");
+                  io.unobserve(entry.target);
+                }
+              });
+            },
+            { threshold: 0.12, rootMargin: "0px 0px -8% 0px" }
+          );
+          reveals.forEach(function (el) { io.observe(el); });
+        } else {
+          reveals.forEach(function (el) { el.classList.add("is-in"); });
+        }
+      } else {
+        document.querySelectorAll(".reveal").forEach(function (el) {
+          el.classList.add("is-in");
+        });
+      }
+    })();
+  </script>
+</body>
+</html>
